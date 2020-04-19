@@ -3,6 +3,10 @@ import './App.css';
 import L from "leaflet"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 
+let workIcon = L.icon({
+  iconUrl: "/work.png",
+  iconSize:[25,25],
+})
 class App extends React.Component {
   state = {
     lat: 35.505,
@@ -11,6 +15,7 @@ class App extends React.Component {
   }
   render() {
     const position = [this.state.lat, this.state.lng]
+    const workPosition = [40.525532, -74.388229]
     return (
       <div className="App">
         <Map className = "map" center={position} zoom={this.state.zoom}>
@@ -18,9 +23,10 @@ class App extends React.Component {
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={position}>
+          <Marker position={workPosition} icon = {workIcon}>
             <Popup>
-          </Popup>
+              <div>I work here</div>
+            </Popup>
           </Marker>
         </Map>
       </div>
